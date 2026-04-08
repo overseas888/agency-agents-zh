@@ -58,5 +58,5 @@ jobs:
               echo "::error file=README.md::Broken link: $link"
               ERRORS=$((ERRORS + 1))
             fi
-          done < <(grep -oP '\[.*?\]\(((?!http)[^)]+\.md)\)' README.md | grep -oP '\(([^)]+)\)' | tr -d '()')
+          done < <(grep -oP '(?<=\]\()(?!http)[^)]+\.md' README.md)
           exit $ERRORS
